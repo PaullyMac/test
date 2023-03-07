@@ -1,0 +1,163 @@
+From: https://www.youtube.com/watch?v=tRZGeaHPoaw&ab_channel=KevinStratvert
+
+Git and GitHub for Beginners Tutorial
+
+---------------------------------------------------------------------------------------------
+Git = open source and free source control  management or what's referred to as SCM
+	manage changes to files over time
+		can revert back to previous versions
+		can compare the differences between different versions
+	 	can see who changed what
+---------------------------------------------------------------------------------------------
+Get Git: https://www.git-scm.com/   >  Downloads     > Operating System     >   Click "CLick here to download" 
+---------------------------------------------------------------------------------------------
+
+Using Git Bash (or any other terminal) for Source Control
+	Configuring Git
+		specify your name and also your e-mail address = we need to know, who's doing it
+
+	Specify the Name | git config --global user.name "Type Your Name" | Press Enter
+	Specify the E-mail address | git config --global user.email "Type E-mail add) | Press Enter
+	Specify Branch Name (Doesn't Make that Much Sense Right Now, Will Need to Learn) | git config --global init.default branch main | Press Enter
+
+	Show help information about git config | git config -h | Press Enter
+	More detailed help information about git config | git help config | Press Enter
+	Clear out the commands | clear | Press Enter
+
+---------------------------------------------------------------------------------------------
+Initialize Repository
+	Change Directory (into the Folder containing your Webpage files) | cd c:/users/paulm....... | Press Enter
+	Turn in into Git Repository | git init | Press Enter
+		to check, go make sure all files are not hidden go to view > show > hidden items
+---------------------------------------------------------------------------------------------
+Git Status
+
+	Check the 'main' branch | git status | Press Enter
+		No Commits Yet
+		Untracked Files: Git will not remember any changes in a file
+	
+	To Track A File | git add sample.htm | Press Enter
+	To Confirm If the File is Being Tracked | git status (again) | Press Enter
+	To Unstage/Untrack a File | git rm --cached sample.htm | Press Enter
+		rm = remove
+---------------------------------------------------------------------------------------------
+Ignore Files 
+	allows us to ignore certain  files, folders, or even just entire extentions
+	ideal for things  like log files or auto generated files that you  
+	don't want to include as part of your project,  or for example, maybe you just don't 	want to show employee salaries.
+
+	Go to the Directory File > Right Click > New > New Text Document > Rename as .gitignore (remove also the .txt extension) > Open New Notepad > Drag .gitignore to the New Notepad >
+	
+	In the Notepad, tell git what files  or folders that you want to ignore by adding:
+		#ignore all.txt files (comment)
+		*.txt (any file containing .txt will be ignored)
+
+	> Go To File > Save
+		
+Sample ignore files: https://github.com/github/gitignore
+---------------------------------------------------------------------------------------------
+
+	To Track All of the Files | git add --all OR git add . OR git add -A | Press Enter
+	
+---------------------------------------------------------------------------------------------
+Commit
+
+	You're taking a snapshot of  your repository at this point in time.
+	Basically, what all of your  files look like right now. In a sense, it's like writing an entry into a history book,  and if you ever want to go back to this  point in the future, you could do that.
+	//Tracking Changes = recovering previous version of your file
+
+
+	To Commit The Files | git commit -m "first commit - committing all files to the repository" | Press Enter
+
+---------------------------------------------------------------------------------------------
+Change Files and View Differences
+
+	Say you changed some words in your html file, you can check your changes in the Git Bash:
+
+	git status > git diff 
+
+	git diff = shows what the differences are by red (original) and green (changed) text
+
+	git add sample.htm = now currently staging
+
+	Staging: place where your files sit until you're ready to commit them.
+---------------------------------------------------------------------------------------------
+In Git we have 3 Environments
+
+	a. Working Files = make edit to files
+	b. Staging = like holding a pen until ready to add in history book
+	c. Commit = added as log or entry in the history book
+---------------------------------------------------------------------------------------------
+
+	git restore --staged sample.htm = remove a file from staging if not ready to commit it. Moves back to working file. Will not be included in commit since it is on working file yet
+
+	git commit -a -m "updated text to free range" = skips staging step
+
+---------------------------------------------------------------------------------------------
+Delete/Remove and Restore Files using Git Bash
+
+	git rm "type the file name (secret recipe.htm)"
+
+		OR just directly delete it in the file explorer
+	
+	git restore "type the file name"
+
+---------------------------------------------------------------------------------------------
+Rename a File
+
+	git mv "KCC Logo.png" "Primary Logo.png"
+		mv = move; moving old file name to new file name
+	
+	git commit -m "changed the file name of an image" = add an entry that the file name has been changed
+
+---------------------------------------------------------------------------------------------
+View All Commit History
+	
+	git log
+	git log --oneline | Abbreviated Version of All the Commit History
+	git commit -m "Changed file name" --amend | if you want to Amend (Make Minor Changes) Commit
+	
+	git log -p | Check all the Changes in the Commits > to exit the view, press Q
+
+
+---------------------------------------------------------------------------------------------
+Reset to previous commit
+	
+	git log --oneline > git reset TYPE THE 7 ALPHANUMERIC VALUE
+---------------------------------------------------------------------------------------------
+Rebase git repository
+	modify what appears in the history book (log) and also the order in which  
+	all of these commits appear using something called rebasing. 
+	
+	git rebase -i --root  > to exit the view, type :x > press enter 
+---------------------------------------------------------------------------------------------
+Another Branch
+	a copy of your  main branch, and it has all the same entries  
+	allows you  to go off and work on let's say a feature or fixing a bug
+ 	you can make all  your changes and it won't affect the main branch.  
+	Once satisfied with all changes, you can then merge it back into the main branch.
+	How software development typically works
+
+	git branch NAME(Case Sensitive) = create new branch alongside the 'main' branch
+	git branch = check all branches; confirm all branches we have
+		the one with asterisk and green highlighted text means we are currently on that branch
+	git switch BranchNameYouWantToSwitch  = switch to another branch
+
+Scenario: Say you are now in your another branch, you changed a text in the html file, you wanted to merge your changes in your main branch. You can go to terminal, switch to main branch, and type 
+
+		git merge -m "Merge branch b back to main" TYPE THE BRANCH YOU WANT TO MERGE
+
+
+	Then, if you're now finish in that branch and you want to delete it now, you type
+
+		git branch -d NAME OF BRANCH
+
+---------------------------------------------------------------------------------------------
+Done with Git
+---------------------------------------------------------------------------------------------
+Set Up GitHub account
+
+	one of the most popular cloud repositories
+	Where we manage project, track issues, assign features  or bugs to different people. 	In a sense, it's a social coding website. 
+
+
